@@ -71,9 +71,11 @@ export default defineConfig({
   ],
 
   /* Run your local dev server before starting the tests */
-  webServer: {
-    command: 'bundle exec jekyll serve',
-    url: 'http://127.0.0.1:4000',
-    reuseExistingServer: !process.env.CI,
-  },
+  webServer: process.env.URL
+    ? undefined
+    : {
+      command: 'bundle exec jekyll serve',
+      url: 'http://127.0.0.1:4000',
+      reuseExistingServer: !process.env.CI,
+    },
 });
