@@ -3,6 +3,9 @@
 ![deploy.yml](https://github.com/joshuaduffy/joshuaduffy.github.io/actions/workflows/jekyll-gh-pages.yml/badge.svg)
 ![test.yml](https://github.com/joshuaduffy/joshuaduffy.github.io/actions/workflows/test.yml/badge.svg)
 
+- [Deploy](https://github.com/joshuaduffy/joshuaduffy.github.io/actions/workflows/deploy.yml)
+- [Playwright Tests](https://github.com/joshuaduffy/joshuaduffy.github.io/actions/workflows/playwright.yml)
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) (version 16 or higher)
@@ -27,7 +30,17 @@
     bundle install
     ```
 
-## Running Playwright Tests
+## Serve
+
+To serve the app locally, use the following command:
+
+```sh
+bundle exec jekyll serve
+```
+
+This will start a local server and you can view the site by navigating to `http://localhost:4000` in your web browser.
+
+## Test
 
 To run the Playwright tests, use the following command:
 
@@ -35,8 +48,3 @@ This will run
 ```sh
 npx playwright test
 ```
-
-## GitHub Actions
-
-- [Deploy Jekyll with GitHub Pages](https://github.com/joshuaduffy/joshuaduffy.github.io/actions/workflows/deploy.yml)
-- [Playwright Tests](https://github.com/joshuaduffy/joshuaduffy.github.io/actions/workflows/playwright.yml)
