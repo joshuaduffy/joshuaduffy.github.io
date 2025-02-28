@@ -56,4 +56,3 @@ jobs:
     uses: ./.github/workflows/playwright.yml
     with:
       url: ${{ needs.deploy.outputs.url }}
-      ruby_version: ${{ github.env.RUBY_VERSION }}
