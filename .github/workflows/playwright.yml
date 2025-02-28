@@ -6,6 +6,9 @@ on:
       url:
         required: false
         type: string
+      ruby_version:
+        required: false
+        type: string
 
 jobs:
     playwright:
@@ -16,8 +19,9 @@ jobs:
         steps:
         - uses: actions/checkout@v4
         - uses: ruby/setup-ruby@v1
+          if: ${{ github.event.inputs.ruby_version }}
           with:
-            ruby-version: '3.4.2'
+            ruby-version: ${{ github.event.inputs.ruby_version }}
             bundler-cache: true
         - uses: actions/setup-node@v4
           with:
