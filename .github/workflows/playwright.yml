@@ -12,14 +12,12 @@ on:
 
 jobs:
     playwright:
-        env:
-          URL: ${{ github.event.inputs.url }}
         timeout-minutes: 30
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v4
         - uses: ruby/setup-ruby@v1
-          if: ${{ github.event.inputs.ruby_version }}
+          if: github.event.inputs.ruby_version
           with:
             ruby-version: ${{ github.event.inputs.ruby_version }}
             bundler-cache: true
@@ -32,6 +30,8 @@ jobs:
           run: npx playwright install --with-deps
         - name: Run Playwright tests
           run: npx playwright test
+          env:
+            URL: ${{ github.event.inputs.url }}
         - uses: actions/upload-artifact@v4
           if: ${{ !cancelled() }}
           with:
