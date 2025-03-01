@@ -10,4 +10,4 @@ jobs:
   test:
     uses: ./.github/workflows/playwright.yml
     with:
-      ruby_version: '3.4.2'
+      setup_ruby: true

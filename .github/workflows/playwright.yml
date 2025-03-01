@@ -6,9 +6,9 @@ on:
       url:
         required: false
         type: string
-      ruby_version:
+      setup_ruby:
         required: false
-        type: string
+        type: boolean
 
 jobs:
     playwright:
@@ -17,9 +17,8 @@ jobs:
         steps:
         - uses: actions/checkout@v4
         - uses: ruby/setup-ruby@v1
-          if: github.event.inputs.ruby_version
+          if: ${{ inputs.setup_ruby }}
           with:
-            ruby-version: ${{ github.event.inputs.ruby_version }}
             bundler-cache: true
         - uses: actions/setup-node@v4
           with:
@@ -28,10 +27,14 @@ jobs:
           run: npm ci
         - name: Install Playwright Browsers
           run: npx playwright install --with-deps
-        - name: Run Playwright tests
-          run: npx playwright test
+        - name: Run Playwright tests (depoyed)
+          if: ${{ inputs.url }}
+          run: npx playwright test -c playwright.config.ts
           env:
-            URL: ${{ github.event.inputs.url }}
+            URL: ${{ inputs.url }}
+        - name: Run Playwright tests (localhost)
+          if: ${{ !inputs.url }}
+          run: npx playwright test -c playwright.serve.config.ts
         - uses: actions/upload-artifact@v4
           if: ${{ !cancelled() }}
           with:
