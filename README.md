@@ -42,9 +42,8 @@ This will start a local server and you can view the site by navigating to `http:
 
 ## Test
 
-To run the Playwright tests, use the following command:
+To run the Playwright tests, use the following command (will run the site locally):
 
-This will run 
 ```sh
-npx playwright test
+npx playwright test -c playwright.serve.config.ts
 ```
