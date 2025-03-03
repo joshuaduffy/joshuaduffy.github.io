@@ -27,7 +27,7 @@ jobs:
           run: npm ci
         - name: Install Playwright Browsers
           run: npx playwright install --with-deps
-        - name: Run Playwright tests (depoyed)
+        - name: Run Playwright tests (deployed)
           if: ${{ inputs.url }}
           run: npx playwright test -c playwright.config.ts
           env:
