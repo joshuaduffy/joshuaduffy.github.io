@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Verificationism and software testing"
-date:   2025-09-06 00:00:00 +0000
+date:   2025-09-05 00:00:00 +0000
 categories: testing
 ---
 
