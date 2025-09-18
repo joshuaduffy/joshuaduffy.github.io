@@ -12,6 +12,6 @@
     "@types/node": "^24.3.1"
   },
   "dependencies": {
-    "mermaid": "^11.11.0"
+    "mermaid": "^11.12.0"
   }
 }
